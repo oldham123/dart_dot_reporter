@@ -3,6 +3,14 @@ import 'dart:io';
 import 'model.dart';
 import 'parser.dart';
 
+import 'package:emojis/emoji.dart';
+
+String warning = Emoji.byName('frowning face with open mouth').char;
+String success = Emoji.byName('smiling face with smiling eyes').char;
+String defaultSymbol = Emoji.byName('white question mark').char;
+String skipped = Emoji.byName('sleeping face').char;
+String fail = Emoji.byName('fire').char;
+
 class DotReporter {
   final Parser parser;
 
@@ -89,8 +97,7 @@ class DotReporter {
         .join('\n');
   }
 
-  String _renderSingleLineOfIcons() =>
-      parser.tests.values.map(_getIcon).join('');
+  String _renderSingleLineOfIcons() => parser.tests.values.map(_getIcon).join('');
 
   void _countTestResults() {
     for (var item in parser.tests.values) {
@@ -112,13 +119,13 @@ class DotReporter {
   String _getIcon(TestModel model) {
     switch (model.state) {
       case State.Failure:
-        return _red('X');
+        return fail;
       case State.Skipped:
-        return _yellow('!');
+        return skipped;
       case State.Success:
-        return _green('.');
+        return success;
       default:
-        return '?';
+        return defaultSymbol;
     }
   }
 
