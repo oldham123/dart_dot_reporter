@@ -10,7 +10,8 @@ environment:
 executables:
   dart_dot_reporter: dart_dot_reporter
 
-# dependencies:
+dependencies:
+  emojis: ^0.9.3
 #   path: ^1.6.0
 
 dev_dependencies:
