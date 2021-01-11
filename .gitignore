@@ -9,3 +9,6 @@ build/
 doc/api/
 
 coverage/
+
+# Dummy test reports for testing
+*.log
